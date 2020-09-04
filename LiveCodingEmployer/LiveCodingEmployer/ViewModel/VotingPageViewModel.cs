@@ -41,6 +41,18 @@ namespace LiveCodingEmployer.ViewModel
             }
         }
 
+        public DelegateCommand UpdateVote 
+        {
+            get
+            {
+                return new DelegateCommand(async () =>
+               {
+                   await LoadingVote();
+
+               });
+            }        
+        }
+
         public async Task Vote()
         {
             string Description = string.Empty;
@@ -64,7 +76,7 @@ namespace LiveCodingEmployer.ViewModel
                     break;
             }
 
-            await NavigationService.NavigateAsync("VotingPage");
+            await LoadingVote();
         }
 
         public async Task LoadingVote()

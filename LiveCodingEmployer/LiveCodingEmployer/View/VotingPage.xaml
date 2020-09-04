@@ -42,7 +42,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Button BackgroundColor="#9540CA" TextColor="White" Text="Atualizar votação" CornerRadius="40"/>
+            <Button BackgroundColor="#9540CA" TextColor="White" Text="Atualizar votação" CornerRadius="40" Command="{Binding UpdateVote}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
