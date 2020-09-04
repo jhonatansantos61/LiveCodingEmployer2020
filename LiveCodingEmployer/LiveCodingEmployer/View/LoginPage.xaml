@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:Controls="clr-namespace:LiveCodingEmployer.Controls"
+             x:Class="LiveCodingEmployer.View.LoginPage">
+    <ContentPage.Content>
+        <StackLayout Padding="20,60,20,60" BackgroundColor="#212121">
+            <Label Text="Login Live Coding Employer" HorizontalOptions="Center" VerticalOptions="Start" FontSize="Title" TextColor="White"/>
+            <StackLayout VerticalOptions="CenterAndExpand" Spacing="20">
+                <Controls:EntryCustom Placeholder="Usuário" PlaceholderColor="Gray" BackgroundColor="White"/>
+                <Controls:EntryCustom Placeholder="Senha" IsPassword="True" PlaceholderColor="Gray" BackgroundColor="White"/>
+                <Button Text="Acessar" BackgroundColor="#9540CA" TextColor="White" CornerRadius="40" Command="{Binding GoVotingPage}"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
