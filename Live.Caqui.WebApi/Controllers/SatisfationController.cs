@@ -63,6 +63,8 @@ namespace Live.Caqui.WebApi.Controllers
                 }
                 else
                 {
+                    User.HashUser = Util.CreateMD5(User.Login + User.Password);
+                    _listUser.Add(User);
                 }
 
                 return Ok(result);
@@ -79,7 +81,17 @@ namespace Live.Caqui.WebApi.Controllers
         {
             try
             {
-                var result = Util.CreateMD5("");
+                var result = new List<SatisfactionModel>();
+                var user = _listUser.Where(x => x.HashUser == Hash).Any();
+                if (user)
+                {
+                    result = _listSatisfaction;
+                }
+                else
+                {
+                    Unauthorized();
+                }
+
                 return Ok(result);
             }
             catch (Exception ex)
@@ -93,7 +105,20 @@ namespace Live.Caqui.WebApi.Controllers
         {
             try
             {
-                var result = Util.CreateMD5("");
+                var result = new List<SatisfactionModel>();
+                
+                var user = _listUser.Where(x => x.HashUser == Satisfaction.HashUser).Any();
+                
+                if (user)
+                {
+                    _listSatisfaction.Add(Satisfaction);
+                    result = _listSatisfaction;
+                }
+                else
+                {
+                    Unauthorized();
+                }
+
                 return Ok(result);
             }
             catch (Exception ex)

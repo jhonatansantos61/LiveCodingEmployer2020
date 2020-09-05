@@ -4,9 +4,10 @@ using System.Text;
 
 namespace Live.Caqui.Model
 {
-    public class SatisfactionModel : HashModel
+    public class SatisfactionModel
     {
         public string Description { get; set; }
+        public string HashUser { get; set; }
         public int Count { get; set; }
     }
 }
