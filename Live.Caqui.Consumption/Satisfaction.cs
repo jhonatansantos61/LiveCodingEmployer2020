@@ -34,7 +34,7 @@ namespace Live.Caqui.Consumption
                 }
             };
         }
-        public async Task<List<SatisfactionModel>> PostSatisfaction(string Hash, SatisfactionModel Satisfaction)
+        public async Task<List<SatisfactionModel>> PostSatisfaction(SatisfactionModel Satisfaction)
         {
             var result = new List<SatisfactionModel>() {
                 new SatisfactionModel(){

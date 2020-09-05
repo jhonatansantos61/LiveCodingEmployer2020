@@ -8,6 +8,6 @@ namespace Live.Caqui.Model
     {
         public string Description { get; set; }
         public string HashUser { get; set; }
-        public int Count { get; set; }
+        public int? Count { get; set; }
     }
 }
