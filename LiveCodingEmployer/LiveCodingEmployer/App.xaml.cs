@@ -49,7 +49,7 @@ namespace LiveCodingEmployer
 
             containerRegistry.GetContainer().RegisterType<ILogin, Login>();
             containerRegistry.GetContainer().RegisterType<ISatisfaction, Satisfaction>();
-
+            containerRegistry.GetContainer().RegisterType<ISyncAsync, SyncAsync>();
         }
     }
 }
