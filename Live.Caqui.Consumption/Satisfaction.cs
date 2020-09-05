@@ -1,5 +1,6 @@
 ﻿using Live.Caqui.Consumption.Interface;
 using Live.Caqui.Model;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,65 +10,37 @@ namespace Live.Caqui.Consumption
 {
     public class Satisfaction : ISatisfaction
     {
+
+        private readonly ISyncAsync _iSyncAsync;
+        public Satisfaction(ISyncAsync ISyncAsync)
+        {
+            _iSyncAsync = ISyncAsync;
+        }
         public async Task<List<SatisfactionModel>> GetSatisfaction(string Hash)
         {
-            return new List<SatisfactionModel>() {
-                new SatisfactionModel(){
-                    Description = "Muito Satisfeito",
-                    Count = 18
-                },
-                new SatisfactionModel(){
-                    Description = "Satisfeito",
-                    Count = 18
-                },
-                new SatisfactionModel(){
-                    Description = "Razoavelmente Satisfeito",
-                    Count = 18
-                },
-                new SatisfactionModel(){
-                    Description = "Pouco Satisfeito",
-                    Count = 18
-                },
-                new SatisfactionModel(){
-                    Description = "Insatisfeito",
-                    Count = 18
-                }
-            };
+            var result = new List<SatisfactionModel>();
+            _iSyncAsync.HTTPVerb = HTTPVerb.GET;
+            _iSyncAsync.Url = "https://live.paulomaestro.com.br/Satisfation/GetSatisfaction" + "?GetSatisfaction=" + Hash;
+            var resultAux = await _iSyncAsync.GoSyncAsync();
+
+            if (!resultAux.Item1)
+            {
+                result = JsonConvert.DeserializeObject<List<SatisfactionModel>>(resultAux.Item2);
+            }
+            return result;
         }
         public async Task<List<SatisfactionModel>> PostSatisfaction(SatisfactionModel Satisfaction)
         {
-            var result = new List<SatisfactionModel>() {
-                new SatisfactionModel(){
-                    Description = "Muito Satisfeito",
-                    Count = 18
-                },
-                new SatisfactionModel(){
-                    Description = "Satisfeito",
-                    Count = 18
-                },
-                new SatisfactionModel(){
-                    Description = "Razoavelmente Satisfeito",
-                    Count = 18
-                },
-                new SatisfactionModel(){
-                    Description = "Pouco Satisfeito",
-                    Count = 18
-                },
-                new SatisfactionModel(){
-                    Description = "Insatisfeito",
-                    Count = 18
-                }
-            };
+            var result = new List<SatisfactionModel>();
+            _iSyncAsync.HTTPVerb = HTTPVerb.POST;
+            _iSyncAsync.Url = "https://live.paulomaestro.com.br/Satisfation/PostSatisfaction";
+            _iSyncAsync.Obj = Satisfaction;
+            var resultAux = await _iSyncAsync.GoSyncAsync();
 
-            result.Select(x =>
+            if (!resultAux.Item1)
             {
-                if (x.Description == Satisfaction.Description)
-                {
-                    x.Count++;
-                }
-                return x;
-            }).ToList();
-
+                result = JsonConvert.DeserializeObject<List<SatisfactionModel>>(resultAux.Item2);
+            }
             return result;
         }
     }
