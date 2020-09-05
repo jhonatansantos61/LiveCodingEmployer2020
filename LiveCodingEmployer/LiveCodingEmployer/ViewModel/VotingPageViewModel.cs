@@ -84,7 +84,7 @@ namespace LiveCodingEmployer.ViewModel
             satisfaction.Description = Description;
             satisfaction.HashUser = UserModel.Hash;
 
-            await LoadingVote();
+            VoteParameter = await _satisfaction.PostSatisfaction(satisfaction);
         }
 
         public async Task LoadingVote()
