@@ -10,7 +10,7 @@ namespace Live.Caqui.Consumption
     {
         public async Task<string> GetUser(UserModel User)
         {
-            return await Task.Run(() =>  Convert.ToBase64String(MD5.Create().ComputeHash(Convert.FromBase64String(User.Login + User.Password))));
+            return User.Login + User.Password;
         }
 
         public async Task<bool> PostUser(UserModel User)

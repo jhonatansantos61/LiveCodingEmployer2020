@@ -33,13 +33,13 @@ namespace LiveCodingEmployer.ViewModel
             _login = Login;
         }
 
-        public DelegateCommand GoVotingPage
+        public DelegateCommand LoginCommand
         {
             get
             {
                 return new DelegateCommand(async () =>
                 {
-                    await NavigationService.NavigateAsync("VotingPage");
+                    await LoginUser();
                 });
             }
         }
@@ -51,7 +51,7 @@ namespace LiveCodingEmployer.ViewModel
             userModel.Login = LoginParameter;
             userModel.Password = PasswordParameter;
 
-            UserModel.Hash = _login.GetUser(userModel).Result;
+            UserModel.Hash = await _login.GetUser(userModel);
 
             if (!string.IsNullOrEmpty(UserModel.Hash))
                 await NavigationService.NavigateAsync("VotingPage");
