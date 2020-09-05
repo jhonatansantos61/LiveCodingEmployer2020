@@ -84,8 +84,9 @@ namespace LiveCodingEmployer.ViewModel
             satisfaction.Description = Description;
             satisfaction.HashUser = UserModel.Hash;
 
-            if(_satisfaction.PostSatisfaction(satisfaction).Result.Count > 0)
-                VoteParameter = await _satisfaction.PostSatisfaction(satisfaction);
+            var result = await _satisfaction.PostSatisfaction(satisfaction);
+            if (result.Count > 0)
+                VoteParameter = result;
             else
                 await PageDialogService.DisplayAlertAsync("Erro", "Nenhum registro encontrado.", "OK");
         }

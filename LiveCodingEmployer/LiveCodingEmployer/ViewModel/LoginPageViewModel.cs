@@ -44,6 +44,17 @@ namespace LiveCodingEmployer.ViewModel
             }
         }
 
+        public DelegateCommand RegisterCommand
+        {
+            get
+            {
+                return new DelegateCommand(async () =>
+                {
+                    await NavigationService.NavigateAsync("RegisterUser");
+                });
+            }
+        }
+
         public async Task LoginUser()
         {
             UserModel userModel = new UserModel();

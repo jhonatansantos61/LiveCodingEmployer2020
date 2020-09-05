@@ -37,7 +37,7 @@ namespace LiveCodingEmployer
 #if DEBUG
             HotReloader.Current.Run(this);
 #endif
-            await NavigationService.NavigateAsync("RegisterUser");
+            await NavigationService.NavigateAsync("LoginPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)

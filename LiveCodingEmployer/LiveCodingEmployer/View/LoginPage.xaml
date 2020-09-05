@@ -11,6 +11,7 @@
             <StackLayout VerticalOptions="CenterAndExpand" Spacing="20">
                 <Controls:EntryCustom Placeholder="Usuário" PlaceholderColor="Gray" BackgroundColor="White" Text="{Binding LoginParameter, Mode=TwoWay}"/>
                 <Controls:EntryCustom Placeholder="Senha" IsPassword="True" PlaceholderColor="Gray" BackgroundColor="White" Text="{Binding PasswordParameter, Mode=TwoWay}"/>
+                <Button Text="Cadastrar" TextColor="White" BackgroundColor="Transparent" Command="{Binding RegisterCommand}"/>
                 <Button Text="Acessar" BackgroundColor="#9540CA" TextColor="White" CornerRadius="40" Command="{Binding LoginCommand}"/>
             </StackLayout>
         </StackLayout>
