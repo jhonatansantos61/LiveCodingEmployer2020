@@ -22,7 +22,7 @@ namespace Live.Caqui.Consumption
         {
             var result = "";
             _iSyncAsync.HTTPVerb = HTTPVerb.GET;
-            _iSyncAsync.Url = $"{ UriGetUser }?User={User.Login}&Password={User.Password}";
+            _iSyncAsync.Url = UriGetUser + "?User=" + User.Login + "&Password=" + User.Password;
             var resultAux = await _iSyncAsync.GoSyncAsync();
 
             if (!resultAux.Item1)
