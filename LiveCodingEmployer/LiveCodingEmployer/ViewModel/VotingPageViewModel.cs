@@ -1,4 +1,5 @@
-﻿using Live.Caqui.Model;
+﻿using Live.Caqui.Consumption.Interface;
+using Live.Caqui.Model;
 using Prism.Commands;
 using Prism.Navigation;
 using Prism.Services;
@@ -12,6 +13,7 @@ namespace LiveCodingEmployer.ViewModel
 {
     public class VotingPageViewModel : ViewModelBase
     {
+        private readonly ISatisfaction _satisfaction;
         private int _index;
         public int Index
         {
@@ -26,8 +28,10 @@ namespace LiveCodingEmployer.ViewModel
             set { SetProperty(ref _voteParamater, value); }
         }
 
-        public VotingPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService, pageDialogService)
+        public VotingPageViewModel(ISatisfaction satisfaction, INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService, pageDialogService)
         {
+            _satisfaction = satisfaction;
+
             Task.Run(() => LoadingVote());
         }
 
@@ -49,13 +53,13 @@ namespace LiveCodingEmployer.ViewModel
                 return new DelegateCommand(async () =>
                {
                    await LoadingVote();
-
                });
             }        
         }
 
         public async Task Vote()
         {
+            SatisfactionModel satisfaction = new SatisfactionModel();
             string Description = string.Empty;
 
             switch (Index)
@@ -77,44 +81,20 @@ namespace LiveCodingEmployer.ViewModel
                     break;
             }
 
+            satisfaction.Description = Description;
+            satisfaction.HashUser = UserModel.Hash;
+
             await LoadingVote();
         }
 
         public async Task LoadingVote()
         {
-            VoteParameter = await GetVote();
-        }
+            var resultPost = await _satisfaction.GetSatisfaction(UserModel.Hash);
 
-        public async Task<List<SatisfactionModel>> GetVote()
-        {
-            List<SatisfactionModel> ListVote = new List<SatisfactionModel>();
-            ListVote.Add(new SatisfactionModel()
-            {
-                Description = "Muito Satisfeito",
-                Count = 12
-            });
-            ListVote.Add(new SatisfactionModel()
-            {
-                Description = "Satisfeito",
-                Count = 12
-            });
-            ListVote.Add(new SatisfactionModel()
-            {
-                Description = "Razoavelmente Satisfeito",
-                Count = 12
-            });
-            ListVote.Add(new SatisfactionModel()
-            {
-                Description = "Pouco Satisfeito",
-                Count = 12
-            });
-            ListVote.Add(new SatisfactionModel()
-            {
-                Description = "Insatisfeito",
-                Count = 12
-            });
-
-            return ListVote;
+            if (resultPost.Count > 0)
+                VoteParameter = resultPost;
+            else
+                await PageDialogService.DisplayAlertAsync("Erro", "Nenhum registro encontrado.", "OK");
         }
     }
 }
