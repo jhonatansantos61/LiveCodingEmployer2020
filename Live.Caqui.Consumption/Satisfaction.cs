@@ -20,7 +20,7 @@ namespace Live.Caqui.Consumption
         {
             var result = new List<SatisfactionModel>();
             _iSyncAsync.HTTPVerb = HTTPVerb.GET;
-            _iSyncAsync.Url = "https://live.paulomaestro.com.br/Satisfation/GetSatisfaction" + "?GetSatisfaction=" + Hash;
+            _iSyncAsync.Url = "https://live.paulomaestro.com.br/Satisfation/GetSatisfaction" + "?Hash=" + Hash;
             var resultAux = await _iSyncAsync.GoSyncAsync();
 
             if (!resultAux.Item1)
