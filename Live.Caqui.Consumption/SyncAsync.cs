@@ -74,7 +74,7 @@ namespace Live.Caqui.Consumption
 
                 if (_httpmessage.StatusCode == HttpStatusCode.OK)
                 {
-                    result = (false, JsonConvert.DeserializeObject<string>(retorno.Result));
+                    result = (true, retorno.Result);
                 }
                 else
                 {
