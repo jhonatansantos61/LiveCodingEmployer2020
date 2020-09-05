@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Live.Caqui.Consumption\Live.Caqui.Consumption.csproj" />
     <ProjectReference Include="..\..\Live.Caqui.Model\Live.Caqui.Model.csproj" />
   </ItemGroup>
 

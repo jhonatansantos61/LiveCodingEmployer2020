@@ -1,6 +1,7 @@
 ﻿using Live.Caqui.Model;
 using Prism.Commands;
 using Prism.Navigation;
+using Prism.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,14 +19,14 @@ namespace LiveCodingEmployer.ViewModel
             set { SetProperty(ref _index, value); }
         }
 
-        private List<VotingModel> _voteParamater;
-        public List<VotingModel> VoteParameter
+        private List<SatisfactionModel> _voteParamater;
+        public List<SatisfactionModel> VoteParameter
         {
             get { return _voteParamater; }
             set { SetProperty(ref _voteParamater, value); }
         }
 
-        public VotingPageViewModel(INavigationService navigationService) : base(navigationService)
+        public VotingPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService, pageDialogService)
         {
             Task.Run(() => LoadingVote());
         }
@@ -84,30 +85,30 @@ namespace LiveCodingEmployer.ViewModel
             VoteParameter = await GetVote();
         }
 
-        public async Task<List<VotingModel>> GetVote()
+        public async Task<List<SatisfactionModel>> GetVote()
         {
-            List<VotingModel> ListVote = new List<VotingModel>();
-            ListVote.Add(new VotingModel()
+            List<SatisfactionModel> ListVote = new List<SatisfactionModel>();
+            ListVote.Add(new SatisfactionModel()
             {
                 Description = "Muito Satisfeito",
                 Count = 12
             });
-            ListVote.Add(new VotingModel()
+            ListVote.Add(new SatisfactionModel()
             {
                 Description = "Satisfeito",
                 Count = 12
             });
-            ListVote.Add(new VotingModel()
+            ListVote.Add(new SatisfactionModel()
             {
                 Description = "Razoavelmente Satisfeito",
                 Count = 12
             });
-            ListVote.Add(new VotingModel()
+            ListVote.Add(new SatisfactionModel()
             {
                 Description = "Pouco Satisfeito",
                 Count = 12
             });
-            ListVote.Add(new VotingModel()
+            ListVote.Add(new SatisfactionModel()
             {
                 Description = "Insatisfeito",
                 Count = 12
