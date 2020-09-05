@@ -9,10 +9,10 @@
         <StackLayout Padding="20,60,20,60" BackgroundColor="#212121">
             <Label Text="Cadastro de usuário" HorizontalOptions="Center" VerticalOptions="Start" FontSize="Title" TextColor="White"/>
             <StackLayout VerticalOptions="CenterAndExpand" Spacing="20">
-                <Controls:EntryCustom Placeholder="Nome" PlaceholderColor="Gray" BackgroundColor="White"/>
-                <Controls:EntryCustom Placeholder="Usuário" PlaceholderColor="Gray" BackgroundColor="White"/>
-                <Controls:EntryCustom Placeholder="Senha" IsPassword="True" PlaceholderColor="Gray" BackgroundColor="White"/>
-                <Button Text="Cadastrar" BackgroundColor="#9540CA" TextColor="White" CornerRadius="40" Command="{Binding GoLoginPage}"/>
+                <Controls:EntryCustom Placeholder="Nome" PlaceholderColor="Gray" BackgroundColor="White" Text="{Binding NameParameter}"/>
+                <Controls:EntryCustom Placeholder="Usuário" PlaceholderColor="Gray" BackgroundColor="White" Text="{Binding LoginParameter}"/>
+                <Controls:EntryCustom Placeholder="Senha" IsPassword="True" PlaceholderColor="Gray" BackgroundColor="White" Text="{Binding PasswordParameter}"/>
+                <Button Text="Cadastrar" BackgroundColor="#9540CA" TextColor="White" CornerRadius="40" Command="{Binding RegisterUserCommand}"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
