@@ -34,7 +34,7 @@
                                 <StackLayout Orientation="Horizontal" VerticalOptions="Center">
                                     <Label Text="{Binding Count}" TextColor="Black" FontSize="Small"
                                                     HorizontalOptions="Start" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
-                                    <Label Text="{Binding DescriptionVote}" TextColor="Black" FontSize="16" 
+                                    <Label Text="{Binding Description}" TextColor="Black" FontSize="16" 
                                                     HorizontalOptions="Start" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
                                 </StackLayout>
                             </Frame>

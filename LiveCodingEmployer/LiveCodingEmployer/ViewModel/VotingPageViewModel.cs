@@ -1,4 +1,4 @@
-﻿using LiveCodingEmployer.Model;
+﻿using Live.Caqui.Model;
 using Prism.Commands;
 using Prism.Navigation;
 using System;
@@ -18,8 +18,8 @@ namespace LiveCodingEmployer.ViewModel
             set { SetProperty(ref _index, value); }
         }
 
-        private List<VoteModel> _voteParamater;
-        public List<VoteModel> VoteParameter
+        private List<VotingModel> _voteParamater;
+        public List<VotingModel> VoteParameter
         {
             get { return _voteParamater; }
             set { SetProperty(ref _voteParamater, value); }
@@ -84,32 +84,32 @@ namespace LiveCodingEmployer.ViewModel
             VoteParameter = await GetVote();
         }
 
-        public async Task<List<VoteModel>> GetVote()
+        public async Task<List<VotingModel>> GetVote()
         {
-            List<VoteModel> ListVote = new List<VoteModel>();
-            ListVote.Add(new VoteModel()
+            List<VotingModel> ListVote = new List<VotingModel>();
+            ListVote.Add(new VotingModel()
             {
-                DescriptionVote = "Muito Satisfeito",
+                Description = "Muito Satisfeito",
                 Count = 12
             });
-            ListVote.Add(new VoteModel()
+            ListVote.Add(new VotingModel()
             {
-                DescriptionVote = "Satisfeito",
+                Description = "Satisfeito",
                 Count = 12
             });
-            ListVote.Add(new VoteModel()
+            ListVote.Add(new VotingModel()
             {
-                DescriptionVote = "Razoavelmente Satisfeito",
+                Description = "Razoavelmente Satisfeito",
                 Count = 12
             });
-            ListVote.Add(new VoteModel()
+            ListVote.Add(new VotingModel()
             {
-                DescriptionVote = "Pouco Satisfeito",
+                Description = "Pouco Satisfeito",
                 Count = 12
             });
-            ListVote.Add(new VoteModel()
+            ListVote.Add(new VotingModel()
             {
-                DescriptionVote = "Insatisfeito",
+                Description = "Insatisfeito",
                 Count = 12
             });
 
