@@ -15,9 +15,15 @@ namespace Live.Caqui.WebApi.Controllers
         private const string Error = "Algo deu errado";
         private readonly ILogger<SatisfationController> _logger;
 
+        private readonly List<UserModel> _listUser;
+        private readonly List<SatisfactionModel> _listSatisfaction;
+
+
         public SatisfationController(ILogger<SatisfationController> logger)
         {
             _logger = logger;
+            _listUser = new List<UserModel>();
+            _listSatisfaction = new List<SatisfactionModel>();
         }
 
         [HttpGet]
@@ -26,8 +32,15 @@ namespace Live.Caqui.WebApi.Controllers
         {
             try
             {
-                var result = Util.CreateMD5(User + Password);
-                return Ok(result);
+                var hash = "";
+
+                var user = _listUser.Where(x => x.Login == User && x.Password == Password).FirstOrDefault();
+
+                if (user != null)
+                    hash = Util.CreateMD5(User + Password);
+
+
+                return Ok(hash);
             }
             catch (Exception ex)
             {
@@ -40,7 +53,47 @@ namespace Live.Caqui.WebApi.Controllers
         {
             try
             {
-                var result = Util.CreateMD5(User + Password);
+                var result = true;
+
+                var user = _listUser.Where(x => x.Login == User.Login && x.Password == User.Login).FirstOrDefault();
+
+                if (user != null)
+                {
+                    result = false;
+                }
+                else
+                {
+                }
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(Error);
+            }
+        }
+
+        [HttpGet]
+        [Route("GetSatisfaction")]
+        public async Task<ActionResult> GetSatisfaction(string Hash)
+        {
+            try
+            {
+                var result = Util.CreateMD5("");
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(Error);
+            }
+        }
+        [HttpPost]
+        [Route("PostSatisfaction")]
+        public async Task<ActionResult> PostSatisfaction([FromBody] SatisfactionModel Satisfaction)
+        {
+            try
+            {
+                var result = Util.CreateMD5("");
                 return Ok(result);
             }
             catch (Exception ex)

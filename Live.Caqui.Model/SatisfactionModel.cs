@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Live.Caqui.Model
 {
-    public class SatisfactionModel
+    public class SatisfactionModel : HashModel
     {
         public string Description { get; set; }
         public int Count { get; set; }
