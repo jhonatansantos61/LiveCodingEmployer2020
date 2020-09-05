@@ -15,15 +15,36 @@ namespace Live.Caqui.WebApi.Controllers
         private const string Error = "Algo deu errado";
         private readonly ILogger<SatisfationController> _logger;
 
-        private readonly List<UserModel> _listUser;
-        private readonly List<SatisfactionModel> _listSatisfaction;
+        private static List<UserModel> _listUser = new List<UserModel>();
+        private static List<SatisfactionModel> _listSatisfaction = new List<SatisfactionModel>()
+        {
+            new SatisfactionModel(){
+                Description = "Muito Satisfeito",
+                Count = 0
+            },
+            new SatisfactionModel(){
+                Description = "Satisfeito",
+                Count = 0
+            },
+            new SatisfactionModel(){
+                Description = "Razoavelmente Satisfeito",
+                Count = 0
+            },
+            new SatisfactionModel(){
+                Description = "Pouco Satisfeito",
+                Count = 0
+            },
+            new SatisfactionModel(){
+                Description = "Insatisfeito",
+                Count = 0
+            }
+        };
+
 
 
         public SatisfationController(ILogger<SatisfationController> logger)
         {
             _logger = logger;
-            _listUser = new List<UserModel>();
-            _listSatisfaction = new List<SatisfactionModel>();
         }
 
         [HttpGet]
@@ -55,9 +76,9 @@ namespace Live.Caqui.WebApi.Controllers
             {
                 var result = true;
 
-                var user = _listUser.Where(x => x.Login == User.Login && x.Password == User.Login).FirstOrDefault();
+                var user = _listUser.Where(x => x.Login == User.Login && x.Password == User.Password).Any();
 
-                if (user != null)
+                if (user)
                 {
                     result = false;
                 }
@@ -105,21 +126,21 @@ namespace Live.Caqui.WebApi.Controllers
         {
             try
             {
-                var result = new List<SatisfactionModel>();
-                
                 var user = _listUser.Where(x => x.HashUser == Satisfaction.HashUser).Any();
-                
+
                 if (user)
                 {
-                    _listSatisfaction.Add(Satisfaction);
-                    result = _listSatisfaction;
+                    _listSatisfaction.Where(x => x.Description == Satisfaction.Description)
+                                     .Select(s => {
+                                         s.Count++;
+                                         return s;
+                                     }).ToList();   
                 }
                 else
                 {
                     Unauthorized();
                 }
-
-                return Ok(result);
+                return Ok(_listSatisfaction);
             }
             catch (Exception ex)
             {
