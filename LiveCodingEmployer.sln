@@ -7,9 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveCodingEmployer.Android"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiveCodingEmployer", "LiveCodingEmployer\LiveCodingEmployer\LiveCodingEmployer.csproj", "{0ECF1387-212E-4C54-8693-2D0BADF41FD0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Live.Caqui.Model", "Live.Caqui.Model\Live.Caqui.Model.csproj", "{17EE6EFA-A298-46AE-BCD2-24269ECA83E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Live.Caqui.Model", "Live.Caqui.Model\Live.Caqui.Model.csproj", "{17EE6EFA-A298-46AE-BCD2-24269ECA83E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Live.Caqui.Consumption", "Live.Caqui.Consumption\Live.Caqui.Consumption.csproj", "{CBED4344-1E6F-4479-8748-D22E7E45517E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Live.Caqui.Consumption", "Live.Caqui.Consumption\Live.Caqui.Consumption.csproj", "{CBED4344-1E6F-4479-8748-D22E7E45517E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Live.Caqui.WebApi", "Live.Caqui.WebApi\Live.Caqui.WebApi.csproj", "{FCFCA084-7129-4CA3-B41F-0A2B45BF9FDC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +39,10 @@ Global
 		{CBED4344-1E6F-4479-8748-D22E7E45517E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CBED4344-1E6F-4479-8748-D22E7E45517E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CBED4344-1E6F-4479-8748-D22E7E45517E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCFCA084-7129-4CA3-B41F-0A2B45BF9FDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCFCA084-7129-4CA3-B41F-0A2B45BF9FDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCFCA084-7129-4CA3-B41F-0A2B45BF9FDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCFCA084-7129-4CA3-B41F-0A2B45BF9FDC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
