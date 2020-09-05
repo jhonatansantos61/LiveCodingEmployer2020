@@ -29,16 +29,22 @@ namespace Live.Caqui.Consumption
             {
                 result = resultAux.Item2;
             }
-            else
-            {
-                result = "";
-            }
             return result;
         }
 
         public async Task<bool> PostUser(UserModel User)
         {
-            return true;
+            var result = false;
+            _iSyncAsync.HTTPVerb = HTTPVerb.POST;
+            _iSyncAsync.Url = UriPostUser;
+            _iSyncAsync.Obj = User;
+            var resultAux = await _iSyncAsync.GoSyncAsync();
+
+            if (!resultAux.Item1)
+            {
+                result = bool.Parse(resultAux.Item2);
+            }
+            return result;
         }
     }
 }
