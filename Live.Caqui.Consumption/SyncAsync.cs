@@ -74,7 +74,7 @@ namespace Live.Caqui.Consumption
 
                 if (_httpmessage.StatusCode == HttpStatusCode.OK)
                 {
-                    result = (true, retorno.Result);
+                    result = (false, retorno.Result);
                 }
                 else
                 {
